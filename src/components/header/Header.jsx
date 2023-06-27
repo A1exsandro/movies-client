@@ -4,6 +4,8 @@ import { faVideoSlash } from '@fortawesome/free-solid-svg-icons'
 import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom' 
 
+import './styles.css'
+
 const Header = () => {
   return (
     <Navbar>
@@ -18,8 +20,8 @@ const Header = () => {
             style={{maxHeight: '100px'}}
             navbarScroll
           >
-            <NavLink className="nav-link" to='/'>Home</NavLink>
-            <NavLink className="nav-link" to='/watchList'>Watch List</NavLink>
+            <NavLink className="nav-link header-nav" to='/'>Home</NavLink>
+            <NavLink className="nav-link header-nav" to='/watchList'>Watch List</NavLink>
           </Nav>
           <Button variant="outline-info" className="me-2">Login</Button>
           <Button variant="outline-info" className="me-2">Register</Button>
