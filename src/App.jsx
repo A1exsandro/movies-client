@@ -6,9 +6,12 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './home/Home'
 import Header from './components/header/Header'
 import Trailer from './components/trailer/Trailer'
+import Reviews from './components/reviews/Reviews'
 
 const App = () => {
   const [movies, setMovies] = useState()
+  const [movie, setMovie] = useState()
+  const [reviews, setReviews] = useState([]) 
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -21,14 +24,23 @@ const App = () => {
 
   const getMovies = async () => {
     try {
-      const response = await api.get("/api/v1/movies")
-      setMovies(response.data) 
+      const response = await api.get("/api/v1/movies") 
+      setMovies(response.data)
     } catch (error) {
       console.log(error)
     }
   }
 
-  
+  const getMovieData = async (movieId) => {
+    try {
+      const response = await api.get(`/api/v1/movies/${movieId}`)
+      const singleMovie = response.data 
+      setMovie(singleMovie) 
+      setReviews(singleMovie.reviewIds)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="App">
@@ -37,6 +49,17 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           {loading && <Route path='/' element={<Home movies={movies}/>} /> }
           <Route path="Trailer/:ytTrailerId" element={<Trailer />} />
+          <Route 
+            path='/Reviews/:movieId'
+            element={
+              <Reviews 
+                getMovieData={getMovieData}
+                movie={movie}
+                reviews={reviews}
+                setReviews={setReviews}
+              />
+            }
+          />
         </Route> 
       </Routes>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 
-const ReviewForm = () => {
+const ReviewForm = ({handleSubmit, revText, labelText, defaultValue}) => {
   return (
     <Form>
       <Form.Group className='mb-3' controlId='exampleForm.ControlsTextarea1'>
@@ -13,7 +13,7 @@ const ReviewForm = () => {
           defaultValue={defaultValue}
         />
       </Form.Group>
-      <Button variant='outline-info' onclick={handleSubmit}>Submit</Button>
+      <Button variant='outline-info' onClick={handleSubmit}>Submit</Button>
     </Form>
   )
 }
