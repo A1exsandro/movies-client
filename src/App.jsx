@@ -7,27 +7,32 @@ import Home from './home/Home'
 
 const App = () => {
   const [movies, setMovies] = useState()
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    getMovies()
+
+    setTimeout(() => {
+      setLoading(true)
+    },4000)
+  },[])
 
   const getMovies = async () => {
     try {
       const response = await api.get("/api/v1/movies")
-      setMovies(response.data)
-      console.log(response.data)
-      
+      setMovies(response.data) 
     } catch (error) {
       console.log(error)
     }
   }
 
-  useEffect(() => {
-    getMovies()
-  },[])
+  
 
   return (
     <div className="App">
       <Routes>
       <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} /> 
+          {loading && <Route path='/' element={<Home movies={movies}/>} /> }
         </Route> 
       </Routes>
     </div>
