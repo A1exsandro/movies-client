@@ -1,6 +1,5 @@
 import React from 'react' 
-import ReactDOM from 'react-dom/client' 
-import './index.css' 
+import ReactDOM from 'react-dom/client'  
 import App from './App'  
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import { BrowserRouter, Route, Routes } from 'react-router-dom' 
