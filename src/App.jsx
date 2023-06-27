@@ -4,6 +4,7 @@ import api from './api/axiosConfig'
 import Layout from './components/Layout'
 import { Routes, Route } from 'react-router-dom'
 import Home from './home/Home'
+import Header from './components/header/Header'
 
 const App = () => {
   const [movies, setMovies] = useState()
@@ -30,8 +31,9 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <Routes>
-      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           {loading && <Route path='/' element={<Home movies={movies}/>} /> }
         </Route> 
       </Routes>
