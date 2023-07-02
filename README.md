@@ -12,3 +12,7 @@
 * npm i react-router-dom
 * npm i @mui/material @emotion/react @emotion/styled
 * npm i react-material-ui-carousel
+
+<p align="center"> 
+  <img src="./public/image/capa.png" width="90%" title="hover text">
+</p>
